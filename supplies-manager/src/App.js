@@ -1,5 +1,6 @@
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
+import 'bootstrap'
 import LogIn from './pages/LogIn';
 import CreateAdmin from './pages/CreateAdmin';
 import CreateSale from './pages/CreateSale';

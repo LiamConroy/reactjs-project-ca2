@@ -1,0 +1,17 @@
+.navbar{
+   background-color: #648D9A;
+   padding-top:2px;
+   padding-bottom:2px;
+}
+
+.nomargin{
+    margin-top:0px;
+    margin-bottom:0px; 
+}
+
+.headingsWhite{
+    color: white;
+}
+body{
+    margin:0px;
+}
