@@ -1,12 +1,31 @@
 .navbar{
    background-color: #648D9A;
+   /* display: none; */
    padding-top:2px;
    padding-bottom:2px;
 }
 
 .nomargin{
+    margin-left:5px;
     margin-top:0px;
     margin-bottom:0px; 
+}
+
+.cardStyle{
+    background-color: #51727C;
+    padding:15px;
+}
+
+.logout{
+    margin-top:15px;
+    margin-right:12px;
+    font-size: 13px;
+    color: #D1D1D1;
+}
+
+
+.mr5{
+    margin-right:5px;
 }
 
 .headingsWhite{

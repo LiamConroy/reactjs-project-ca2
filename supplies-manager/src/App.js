@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
-import 'bootstrap'
+import Navbar from './components/navTop.js';
+import 'bootstrap/dist/css/bootstrap.css'
 import LogIn from './pages/LogIn';
 import CreateAdmin from './pages/CreateAdmin';
 import CreateSale from './pages/CreateSale';
@@ -13,7 +14,9 @@ import SingleSale from './pages/SingleSale';
 
 function App() {
   return (
-    <Router>
+     <Router>
+      <Navbar />
+      <div className = "container">
       <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/sales" element={<SalesPage />}></Route>
@@ -22,6 +25,7 @@ function App() {
           <Route path="/admin/create" element={<CreateAdmin />}></Route>
           <Route path="/login" element={<LogIn />}></Route>
       </Routes>
+      </div>
     </Router>
   );
 }
