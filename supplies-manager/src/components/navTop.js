@@ -4,7 +4,7 @@ import '../style.css'
 const Navtop = () => {
     return(
     <div className = "navbar">
-        <div className = "float-right pt-2 pb-2">
+        <div className = "float-right pt-1 pb-1">
            <h3 className = "nomargin headingsWhite">SalesManagerDB</h3>
         </div>
 

@@ -1,12 +1,18 @@
 import React from 'react';
 import '../style.css'
+import { Link } from 'react-router-dom'
 
 const NavLeft = () => {
     return(
     <div className = "sidenav">
         <div>
-        <h3 className = "headerWhite">Sales</h3>
+
+        <Link to = "sales"><h3 className = "headerWhite">Sales</h3></Link>
         <h3 className = "headerWhite pt-2">Users</h3>
+
+        {/* no path yet */}
+        {/* <Link to = "users"><h3 className = "headerWhite pt-2">Users</h3></Link> */}
+        
         </div>
 
         <div className = "sidePad">
