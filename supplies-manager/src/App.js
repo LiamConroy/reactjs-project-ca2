@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
 import Navbar from './components/navTop.js';
+import NavLeft from './components/navLeft';
 import 'bootstrap/dist/css/bootstrap.css'
 import LogIn from './pages/LogIn';
 import CreateAdmin from './pages/CreateAdmin';
@@ -15,8 +16,11 @@ import SingleSale from './pages/SingleSale';
 function App() {
   return (
      <Router>
+
+<NavLeft />
       <Navbar />
       <div className = "container">
+      
       <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/sales" element={<SalesPage />}></Route>
