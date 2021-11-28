@@ -54,6 +54,18 @@
     -moz-box-shadow: 10px 10px 8px -3px rgba(0,0,0,0.19);
 }
 
+
+.cardStyleAlt{
+    background-color: #FAFAFA;
+    padding-left: 65px;
+    padding-right: 65px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    box-shadow: 10px 10px 8px -3px rgba(0,0,0,0.19);
+    -webkit-box-shadow: 10px 10px 8px -3px rgba(0,0,0,0.19);
+    -moz-box-shadow: 10px 10px 8px -3px rgba(0,0,0,0.19);
+}
+
 .smallText{
     font-size: 13px;
     color: #D1D1D1; 
@@ -74,6 +86,19 @@
 .headingsWhite{
     color: white;
 }
+
+.custom{
+    background-color: #8EFF58;   
+    color: white; 
+}
+
+
+.btn-flat {
+    background-color: purple;
+    color: white;
+  }
+
 body{
     margin:0px;
 }
+

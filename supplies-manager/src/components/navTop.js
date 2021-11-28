@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style.css'
+import { Link } from 'react-router-dom'
 
 const Navtop = () => {
     return(
@@ -9,7 +10,8 @@ const Navtop = () => {
         </div>
 
         <div className = "">
-            <p className = "float-right logout">Sign in</p>
+
+            <Link to='login'><p className = "float-right logout">Sign in</p></Link>
         </div>
         
     </div>

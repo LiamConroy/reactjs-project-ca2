@@ -17,7 +17,8 @@ const NavLeft = () => {
 
         <div className = "sidePad">
             <div className = "">
-            <p className = "smallText removemargin">Create Admin</p>
+
+            <Link to = "admin/create"><p className = "smallText removemargin">Create Admin</p></Link>
             <p className = "removemargin smallText">Support</p>
             </div>
             
