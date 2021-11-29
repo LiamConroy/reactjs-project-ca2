@@ -17,12 +17,12 @@ const LogIn = () => {
         console.log(login)
       
         axios.post('http://localhost:8000/admins/login', {
-          email: login.email,
+          name: login.name,
           password: login.password
         })
             .then(response => {
-              console.log(response.data.token)
-              localStorage.setItem('token',response.data.token )
+              console.log(response.data)
+              localStorage.setItem('token',response.data.auth_token )
             })
             .catch(err => console.log(err))
       }
@@ -42,7 +42,7 @@ const LogIn = () => {
                 <div className = "">
                     <div className = "mt-2">
                     <p className = "paraWhite removemargin mb-1">Username</p>
-                    <input className = "" type = "text" name = "email" onChange={loginHandler}/><br />
+                    <input className = "" type = "text" name = "name" onChange={loginHandler}/><br />
                     </div>
 
                     <div className = "mt-3 ml-5">

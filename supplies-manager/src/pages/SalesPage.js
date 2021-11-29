@@ -7,8 +7,8 @@ const SalesPage = () => {
     useEffect(() => {
         axios.get("http://localhost:8000/sales")
         .then(response=> {
-            console.log(response.data)
-            setSales(response.data)
+            console.log(response.data.listSales)
+            setSales(response.data.listSales)
         })
         .catch(err =>{
             console.log(err)
@@ -16,16 +16,16 @@ const SalesPage = () => {
     })
 
 
-if(!sales){
-    var salesList = sales.map(sale => {
+if (!sales) return null
+    const salesList = sales.map(sale => {
         return(
-            <div>
-                <p>{sale.listSales.couponUsed}</p>
-                <p>{sale.listSales.saleDate}</p>
+            <div key = {sale._id}>
+                <p>{sale.couponUsed}</p>
+                <p>{sale.saleDate}</p>
             </div>
         )
     })
-}
+
 
 
     return(
