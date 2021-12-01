@@ -59,24 +59,26 @@ if (!sales) return null
 
     return(
         <div className = "container">
-            <div className = "mt-3">
+        <div className = "mt-3">
+
+        <div className = "d-flex justify-content-center">
+            <div className = "col-lg-10">
             <h3>Sales</h3>
-        
-        <div className = "col-lg-10">
-        <Table bordered size="sm">
-            <thead>
-                <tr>
-                    <th>CustEmail</th>
-                    <th>SaleDate</th>
-                    <th>NumItems</th>
-                    <th>StoreLocation</th>
-                    <th width = "16%">Options</th>
-                </tr>
-            </thead>
-        
-                { salesList }
-        </Table>
-        </div>
+            <Table bordered size="sm">
+                <thead>
+                    <tr>
+                        <th>CustEmail</th>
+                        <th>SaleDate</th>
+                        <th>NumItems</th>
+                        <th>StoreLocation</th>
+                        <th width = "16%">Options</th>
+                    </tr>
+                </thead>
+            
+                    { salesList }
+            </Table>
+                    </div>
+                </div>
             </div>
         </div>
     )
