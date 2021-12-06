@@ -17,7 +17,7 @@ const SingleSale = () => {
         .catch(err =>{
             console.log(err)
         })
-    })
+    }, [id])
 
 
     if(!sale) return null

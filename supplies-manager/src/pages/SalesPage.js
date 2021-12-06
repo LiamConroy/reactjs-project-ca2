@@ -16,7 +16,18 @@ const SalesPage = () => {
         .catch(err =>{
             console.log(err)
         })
-    })
+    },[])
+
+    const deleteSale = (id) => {
+
+        axios.delete(`http://localhost:8000/sales/${id}`)
+        .then(response=> {
+            console.log(response.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    } 
 
 
 if (!sales) return null
@@ -26,19 +37,19 @@ if (!sales) return null
         return(
             <>
 
-            {/* <div key = {sale._id}> */}
+            
                 {/* <Table bordered> */}
-                    <tbody>
+                    <tbody key = {sale._id}>
                     <tr>
                         <td><Link to = {`/sales/${sale._id}`}>{sale.customer.email}</Link></td>
                         <td>{sale.saleDate}</td>
                         <td></td>
                         <td>{sale.storeLocation}</td>
 
-                        <td className = "removePadding">
+                        <td className = "removePadding"> 
                         
-                        <Button variant="warning" type = "submit">Edit</Button>
-                        <Button variant="danger" type = "submit">Delete</Button>
+                        <Button variant="warning" type = "submit" >Edit</Button>
+                        <Button variant="danger" type = "submit" onClick ={() => deleteSale(sale._id)}>Delete</Button>
                         
                         </td>
 
