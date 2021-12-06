@@ -20,7 +20,11 @@ const SalesPage = () => {
 
     const deleteSale = (id) => {
 
-        axios.delete(`http://localhost:8000/sales/${id}`)
+        axios.delete(`http://localhost:8000/sales/${id}`,{
+            headers: {
+                "Authorization" : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Mzg4MjEzNjQsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYWRtaW4iLCJpYXQiOjE2Mzg4MDY5NjR9.q7G933H2ndEjNUAaEfycEFkBTMovhGHvBKqyowss6_c`
+            }
+        })
         .then(response=> {
             console.log(response.data)
         })
@@ -74,7 +78,25 @@ if (!sales) return null
 
         <div className = "d-flex justify-content-center">
             <div className = "col-lg-10">
-            <h3>Sales</h3>
+            
+                <div className = "col-lg-5">
+                    <div className = "d-inline">
+                    <h3>Sales</h3>
+                    </div>
+                    
+                    <div className = "d-inline">
+
+                    <Link to = "create">
+                    <Button variant = "success">Create</Button>
+                    </Link>
+                    </div>
+                </div>
+                
+                {/* <div className= "col-lg-5">
+                    <div className = "d-inline">
+                    
+                    </div>
+                </div> */}
             <Table bordered size="sm">
                 <thead>
                     <tr>

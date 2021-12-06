@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useState } from 'react';
 import { Button } from 'react-bootstrap'
-const LogIn = () => {
+const LogIn = (props) => {
 
-    const [login, setLogin] = useState({});
+    const [login, setLogin] = useState({name: "admin", password: "secret"});
 
     const loginHandler = (e) => {
       
@@ -22,7 +22,7 @@ const LogIn = () => {
         })
             .then(response => {
               console.log(response.data)
-              localStorage.setItem('token',response.data.auth_token )
+              props.onAuthenticated(true, response.data.token)
             })
             .catch(err => console.log(err))
       }

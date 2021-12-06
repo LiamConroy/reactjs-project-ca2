@@ -28,7 +28,7 @@ const SingleSale = () => {
               <tbody>
                   <tr>
                       <td>{ item.name }</td>
-                      <td> ${ item.price.$numberDecimal }</td>
+                      <td> { item.price.$numberDecimal }</td>
                       <td>{ item.quantity }</td>
                   </tr>
               </tbody>
