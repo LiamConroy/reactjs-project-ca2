@@ -1,9 +1,12 @@
 import axios from "axios"
 import { useState } from 'react';
 import { Button } from 'react-bootstrap'
-const LogIn = (props) => {
+import { useNavigate } from 'react-router-dom'
 
-    const [login, setLogin] = useState({name: "admin", password: "secret"});
+const LogIn = props => {
+
+    const [login, setLogin] = useState({name: "Liamo", password: "secret"});
+    let navigate = useNavigate();
 
     const loginHandler = (e) => {
       
@@ -21,11 +24,21 @@ const LogIn = (props) => {
           password: login.password
         })
             .then(response => {
-              console.log(response.data)
-              props.onAuthenticated(true, response.data.token)
+              props.onAuthenticated(true, response.data.auth_token)
+              console.log(response.data.auth_token)
+              navigate('/home')
             })
             .catch(err => console.log(err))
       }
+
+      // let linkHome
+
+      // if(props.authenticated){
+      //   linkHome = (
+      //     "/home"
+      //   )
+      // }
+
     return(
         <div className = "container">
 
@@ -34,7 +47,7 @@ const LogIn = (props) => {
             <div>
                 <h3 className = "nomargin headerWhite text-center">Sign in </h3>
                 
-                <h4 className = "nomargin headerWhite">To manage your sales</h4>             
+                <h6 className = "nomargin headerWhite text-center">To manage your sales</h6>             
             </div>
 
 

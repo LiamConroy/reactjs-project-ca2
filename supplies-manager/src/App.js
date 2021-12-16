@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { useState, useEffect} from 'react'
-import './App.css';
+import './style.css';
 import Navbar from './components/navTop.js';
 import NavLeft from './components/navLeft';
 import 'bootstrap/dist/css/bootstrap.css'
@@ -10,28 +10,30 @@ import CreateSale from './pages/CreateSale';
 import HomePage from './pages/HomePage';
 import SalesPage from './pages/SalesPage';
 import SingleSale from './pages/SingleSale';
+import EditSale from './pages/SalesEdit';
+import UsersPage from './pages/UsersPage';
 
 
 
 
-function App() {
+const App = () => {
   const [authenticated, setAuthenticated] = useState(false)
+  // let protectedFestivals
 
   useEffect(() => {
-    if(localStorage.getItem('token')){
+    if(localStorage.getItem('auth_token'))
+    {
       setAuthenticated(true)
     }
-  },[])
+  }, [])
 
-  const onAuthenticated = (auth, token) => {
+  const onAuthenticated = (auth, auth_token) => {
     setAuthenticated(auth)
     if(auth){
-      console.log(authenticated)
-      localStorage.setItem('token', token)
+      localStorage.setItem('auth_token', auth_token)
     }
     else {
-      console.log(authenticated)
-      localStorage.removeItem('token')
+      localStorage.removeItem('auth_token')
     }
     
   }
@@ -43,12 +45,14 @@ function App() {
       <div className = "container">
       
       <Routes>
-          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/home" element={<HomePage />}></Route>
+          <Route path="/sales/users" element={<UsersPage />}></Route>
           <Route path="/sales" element={<SalesPage />}></Route>
           <Route path="/sales/:id" element={<SingleSale />}></Route>
           <Route path="/sales/create" element={<CreateSale />}></Route>
+          <Route path="/sales/:id/edit" element={<EditSale />}></Route>
           <Route path="/admin/create" element={<CreateAdmin onAuthenticated={onAuthenticated} authenticated={authenticated}/>}></Route>
-          <Route path="/login" element={<LogIn />}></Route>
+          <Route path="/" element={<LogIn onAuthenticated={onAuthenticated} authenticated={authenticated}/>}></Route>
       </Routes>
       </div>
     </Router>

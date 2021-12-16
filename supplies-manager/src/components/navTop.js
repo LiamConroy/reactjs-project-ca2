@@ -11,7 +11,7 @@ const Navtop = () => {
 
         <div className = "">
 
-            <Link to='login'><p className = "float-right logout">Sign in</p></Link>
+            <Link className = "text-link" to='/'><p className = "float-right logout">Sign in</p></Link>
         </div>
         
     </div>

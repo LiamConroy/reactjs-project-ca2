@@ -31,8 +31,16 @@
     margin-bottom:0px; 
 }
 
+.removeMargin{
+    margin: 0px;
+}
+
+.push-right{
+    margin-left:965px;
+}
+
 .removePadding{
-    padding:0px;
+    width: 10px;
 }
 
 .removemargin{
@@ -106,3 +114,21 @@ body{
     margin:0px;
 }
 
+.text-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+.btn-custom{
+    background-color: hotpink;
+    color: red;
+}
+
+.textColor {
+    color: white
+  }
+  
+  .bgColor {
+    background: purple
+}

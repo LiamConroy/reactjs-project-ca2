@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
+import '../style.css';
 import { useEffect, useState } from 'react'
 import { Table, Button } from 'react-bootstrap'
 
@@ -24,8 +25,9 @@ const SingleSale = () => {
 
     const itemList = sale.items.map(item => {
         return(
+            
             <>
-              <tbody>
+              <tbody key = {item._id}>
                   <tr>
                       <td>{ item.name }</td>
                       <td> { item.price.$numberDecimal }</td>
@@ -38,7 +40,10 @@ const SingleSale = () => {
         )
     })
 
+    
+
     return (
+
         <div className = "container">
         <div className = "d-flex justify-content-xl-center">        
         <div className = "mt-5 cardStyleAlt">
@@ -66,7 +71,7 @@ const SingleSale = () => {
                 </Table>
 
                 <div className = "">
-                <Button className = "pl-5" variant ="warning" type = "submit">Edit</Button>
+                <Link className = "text-link" to = {`/sales/${sale._id}/edit`}><Button variant="warning" type = "submit" >Edit</Button></Link>
                 <Button className = "ml-5" variant ="danger" type = "submit">Delete</Button>
                 </div>
  
@@ -84,5 +89,6 @@ const SingleSale = () => {
     </div>
     )
   }
+
   
   export default SingleSale

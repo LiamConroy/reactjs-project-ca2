@@ -1,9 +1,14 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
-import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-const SalesPage = () => {
+import { Button, ButtonGroup } from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
+
+import '../style.css';
+import 'bootstrap/dist/css/bootstrap.css'
+
+
+const SalesPage = (props) => {
 
     const [sales, setSales] = useState(null) 
 
@@ -20,9 +25,11 @@ const SalesPage = () => {
 
     const deleteSale = (id) => {
 
+        let auth_token = localStorage.getItem('auth_token')
+
         axios.delete(`http://localhost:8000/sales/${id}`,{
             headers: {
-                "Authorization" : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Mzg4MjEzNjQsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AYWRtaW4iLCJpYXQiOjE2Mzg4MDY5NjR9.q7G933H2ndEjNUAaEfycEFkBTMovhGHvBKqyowss6_c`
+                "Authorization" : `Bearer ${auth_token}`
             }
         })
         .then(response=> {
@@ -31,7 +38,31 @@ const SalesPage = () => {
         .catch(err =>{
             console.log(err)
         })
-    } 
+    }
+    
+    let navigate = useNavigate();
+    const editSale = (id) => {
+        return(
+            navigate(`/sales/${id}/edit`)
+        )
+    }
+
+<>
+  <style type="text/css">
+    {`
+    .btn-flat {
+      background-color: purple;
+      color: white;
+    }
+
+    .btn-xxl {
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+    }
+    `}
+  </style>
+
+</>
 
 
 if (!sales) return null
@@ -42,7 +73,6 @@ if (!sales) return null
             <>
 
             
-                {/* <Table bordered> */}
                     <tbody key = {sale._id}>
                     <tr>
                         <td><Link to = {`/sales/${sale._id}`}>{sale.customer.email}</Link></td>
@@ -50,20 +80,17 @@ if (!sales) return null
                         <td></td>
                         <td>{sale.storeLocation}</td>
 
-                        <td className = "removePadding"> 
-                        
-                        <Button variant="warning" type = "submit" >Edit</Button>
-                        <Button variant="danger" type = "submit" onClick ={() => deleteSale(sale._id)}>Delete</Button>
-                        
-                        </td>
 
+                       
+                        <td> 
+                            <ButtonGroup className = "" size = "lg">
+                                <Button variant="warning" className = "textColor bgColor" type = "submit" onClick = {() => editSale(sale._id)}>Edit</Button>
+                                <Button variant="danger" type = "submit" onClick ={() => deleteSale(sale._id)}>Delete</Button>
+                            </ButtonGroup>
+                        </td>
+                        
                     </tr>
                     </tbody>
-                {/* </Table>  */}
-
-                {/* <p>{sale.couponUsed}</p>
-                <p>{sale.saleDate}</p> */}
-            {/* </div> */}
 
             </>
 
@@ -71,26 +98,20 @@ if (!sales) return null
     })
 
 
-
     return(
+
         <div className = "container">
         <div className = "mt-3">
 
         <div className = "d-flex justify-content-center">
             <div className = "col-lg-10">
-            
-                <div className = "col-lg-5">
-                    <div className = "d-inline">
-                    <h3>Sales</h3>
-                    </div>
-                    
-                    <div className = "d-inline">
 
-                    <Link to = "create">
-                    <Button variant = "success">Create</Button>
-                    </Link>
+
+            <div className = "col-md-12">
+                    <div className = "">
+                    <h3 className = "">Sales</h3>
                     </div>
-                </div>
+            </div>
                 
                 {/* <div className= "col-lg-5">
                     <div className = "d-inline">
@@ -110,11 +131,17 @@ if (!sales) return null
             
                     { salesList }
             </Table>
+            <div className = "push-right">
+                <Link to = "create">
+                <Button size = "lg" variant = "success" className = "textColor bgColor">Create</Button>
+                </Link>
+            </div>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
 
 export default SalesPage
