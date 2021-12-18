@@ -32,15 +32,15 @@
 }
 
 .removeMargin{
-    margin: 0px;
+    margin:0px !important;
 }
 
 .push-right{
-    margin-left:965px;
+    margin-left:865px;
 }
 
 .removePadding{
-    width: 10px;
+    padding: 0px !important;
 }
 
 .removemargin{
@@ -99,16 +99,23 @@
     color: white;
 }
 
-.custom{
-    background-color: #8EFF58;   
-    color: white; 
+.custom-edit{
+    border-radius: 0% !important;
+    background-color: #FFDA58 !important;
 }
 
+.custom-delete{
+    border-radius: 0% !important;
+    background-color: #FF5656 !important;
+}
 
-.btn-flat {
-    background-color: purple;
-    color: white;
-  }
+.custom-create{
+    border-style: solid !important;
+    border-color: black !important;
+    border-radius: 0% !important;
+    background-color: #62d12a!important;    
+}
+
 
 body{
     margin:0px;
@@ -119,16 +126,37 @@ body{
     text-decoration: inherit;
 }
 
-
-.btn-custom{
-    background-color: hotpink;
-    color: red;
+.table-back{
+    background-color: #51727C;
 }
 
-.textColor {
-    color: white
-  }
-  
-  .bgColor {
-    background: purple
+.col-back{
+    background-color: rgb(100, 141, 154, 0.12) !important;
+}
+
+.border-style{
+    border:solid;
+    border-color: black ;
+}
+
+.border-color{
+    border-color:black;
+}
+
+/* .row-style{
+    border-color: black !important;  
+} */
+
+.border-remove {
+    border-style : hidden !important;
+    border-style: solid;
+    border-color: blue;
+}
+
+.floatRight {
+    float: right;
+}
+
+.custom-input{
+    width:65%;
 }

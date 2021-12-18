@@ -22,11 +22,13 @@ const CreateSale = (props) => {
     // }
 
     const handleForm = e => {
-
+        
         setForm(prevState => ({
           ...prevState,
           [e.target.name] : e.target.value
-        }))        
+        }))      
+        
+        console.log(form)
     }
 
     
@@ -37,7 +39,21 @@ const CreateSale = (props) => {
 
         let auth_token = localStorage.getItem('auth_token')
 
-        axios.post("http://localhost:8000/sales", form, {
+        axios.post("http://localhost:8000/sales", 
+          
+        {
+            storeLocation: form.storeLocation,
+            couponUsed: form.couponUsed,
+            purchaseMethod: form.purchaseMethod,
+            items: {
+                name: form.name,
+                tags: form.tags,
+                price: form.price,
+                quantity: form.quantity
+            }
+        }, 
+        
+        {
             headers: {
                 "Authorization" : `Bearer ${auth_token}`
             }
@@ -83,28 +99,28 @@ const CreateSale = (props) => {
                     <input className = "" type = "text" name = "purchaseMethod" onChange = {handleForm}/>
                     </div>
 
-                    {/* <div className = "mt-3 mb-0">
+                    <div className = "mt-3 mb-0">
                         <h5>Item:</h5>
                     </div>
 
                     <div className = "ml-5 mt-2">
                     <p className = " removemargin mb-1">Item Name</p>
-                    <input className = "" type = "text" name = "name" onChange = {handleItemForm}/>
+                    <input className = "" type = "text" name = "name" onChange = {handleForm}/>
                     </div>
                     <div className = "ml-5 mt-2">
                     <p className = " removemargin mb-1">Item Tag</p>
-                    <input className = "" type = "text" name = "tags" onChange = {handleItemForm}/>
+                    <input className = "" type = "text" name = "tags" onChange = {handleForm}/>
                     </div>
 
                     <div className = "ml-5 mt-2">
                     <p className = " removemargin mb-1">Price</p>
-                    <input className = "" type = "text" name = "price" onChange = {handleItemForm}/>
+                    <input className = "" type = "text" name = "price" onChange = {handleForm}/>
                     </div>
 
                     <div className = "ml-5 mt-2">
                     <p className = " removemargin mb-1">Quantity</p>
-                    <input className = "" type = "text" name = "quantity" onChange = {handleItemForm}/>
-                    </div> */}
+                    <input className = "" type = "text" name = "quantity" onChange = {handleForm}/>
+                    </div> 
 
                     <div className = "mt-4 text-center"> 
                         <Button variant="success" type = "submit" onClick = {submitSale}>Submit</Button>

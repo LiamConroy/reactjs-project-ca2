@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/index.js'
 import { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import { Button, ButtonGroup } from 'react-bootstrap'
@@ -13,7 +13,7 @@ const SalesPage = (props) => {
     const [sales, setSales] = useState(null) 
 
     useEffect(() => {
-        axios.get("http://localhost:8000/sales")
+        axios.get("/sales")
         .then(response=> {
             console.log(response.data.listSales)
             setSales(response.data.listSales)
@@ -72,26 +72,24 @@ if (!sales) return null
         return(
             <>
 
-            
                     <tbody key = {sale._id}>
-                    <tr>
-                        <td><Link to = {`/sales/${sale._id}`}>{sale.customer.email}</Link></td>
-                        <td>{sale.saleDate}</td>
-                        <td></td>
-                        <td>{sale.storeLocation}</td>
+                    <tr className = "border-style text-center">
+                        <td className = "col-back"><Link to = {`/sales/${sale._id}`}>{sale._id}</Link></td>
+                        <td className = "col-back">{sale.saleDate}</td>
+                        {/* <td></td> */}
+                        <td className = "col-back">{sale.storeLocation}</td>
 
 
                        
-                        <td> 
+                        <td className = "text-center removePadding"> 
                             <ButtonGroup className = "" size = "lg">
-                                <Button variant="warning" className = "textColor bgColor" type = "submit" onClick = {() => editSale(sale._id)}>Edit</Button>
-                                <Button variant="danger" type = "submit" onClick ={() => deleteSale(sale._id)}>Delete</Button>
+                                <Button variant="" className = "custom-edit" type = "submit" onClick = {() => editSale(sale._id)}>Edit</Button>
+                                <Button variant="" className = "custom-delete" type = "submit" onClick ={() => deleteSale(sale._id)}>Delete</Button>
                             </ButtonGroup>
                         </td>
                         
                     </tr>
                     </tbody>
-
             </>
 
         )
@@ -104,36 +102,47 @@ if (!sales) return null
         <div className = "mt-3">
 
         <div className = "d-flex justify-content-center">
-            <div className = "col-lg-10">
-
-
-            <div className = "col-md-12">
-                    <div className = "">
-                    <h3 className = "">Sales</h3>
-                    </div>
-            </div>
+            <div className = "col-lg-9">
                 
-                {/* <div className= "col-lg-5">
-                    <div className = "d-inline">
-                    
-                    </div>
-                </div> */}
-            <Table bordered size="sm">
-                <thead>
-                    <tr>
-                        <th>CustEmail</th>
+
+        <div className = "col-md-12">
+            <div className = "col-sm-6 removeMargin">
+                    <h3 className = "">Sales</h3>
+            </div>
+
+            <div className = "col-sm-6">
+            
+            </div>    
+        </div>
+
+             <Table bordered size="sm" variant="" className = ""> 
+                 <thead className = "table-back border-color">
+                    <tr className = "headingsWhite">
+                        <th>Order ID</th>
                         <th>SaleDate</th>
-                        <th>NumItems</th>
+                        {/* <th>NumItems</th> */}
                         <th>StoreLocation</th>
                         <th width = "16%">Options</th>
                     </tr>
                 </thead>
+
+            {/* <table className = "Table">
+                <thead className = "thead-dark">
+                    <tr>
+                        <th scope = "col">CustEmail</th>
+                        <th scope = "col">SaleDate</th>
+                        <th scope = "col">NumItems</th>
+                        <th scope = "col">StoreLocation</th>
+                        <th scope = "col">Options</th>
+                    </tr>
+                </thead>
+            </table>  */}
             
                     { salesList }
             </Table>
-            <div className = "push-right">
+            <div className = "floatRight ">
                 <Link to = "create">
-                <Button size = "lg" variant = "success" className = "textColor bgColor">Create</Button>
+                    <Button size = "lg" variant = "" className = "custom-create">Create</Button>
                 </Link>
             </div>
                     </div>
