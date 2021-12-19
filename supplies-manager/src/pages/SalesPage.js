@@ -27,7 +27,7 @@ const SalesPage = (props) => {
 
         let auth_token = localStorage.getItem('auth_token')
 
-        axios.delete(`http://localhost:8000/sales/${id}`,{
+        axios.delete(`/sales/${id}`,{
             headers: {
                 "Authorization" : `Bearer ${auth_token}`
             }

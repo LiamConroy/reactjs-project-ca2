@@ -1,5 +1,5 @@
 import { Button, Table } from 'react-bootstrap'
-import axios from "axios"
+import axios from '../config/index.js'
 import { useNavigate, useParams} from 'react-router-dom'
 import { useState, useEffect } from "react"
 
@@ -15,7 +15,7 @@ const EditSale = () => {
     const [sale, setSale] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/sales/${id}`)
+        axios.get(`/sales/${id}`)
         .then(response=> {
             console.log(response.data.sale)
             setSale(response.data.sale)
@@ -51,39 +51,32 @@ const EditSale = () => {
                   </tr>
               </tbody>
             </>
-        // <div className = "floatRight">
-        //     <div className = "ml-5 mt-2">
-        //             <p className = " removemargin mb-1">Item Name</p>
-        //             <input className = "" type = "text" name = "name" onChange = {handleForm} defaultValue = {item.name}/>
-        //     </div>
-
-        //         <div className = "ml-5 mt-2">
-        //             <p className = " removemargin mb-1">Price</p>
-        //             <input className = "" type = "text" name = "price" onChange = {handleForm}/>
-        //         </div>
-
-                    
-              
-        //      </div>
         )
     })
 
     
 
-    const submitSale = () => {
+    const submitSale = (props) => {
 
-        // let token = localStorage.getItem('token')
+        // let auth_token = localStorage.getItem('auth_token')
 
-        axios.post(`http://localhost:8000/sales/${id}`, {
+        axios.post(`/sales/${id}`, 
+
+        // headers: {
+        //     "Authorization" : `Bearer ${auth_token}`
+        // },
+
+        {
             storeLocation: form.storeLocation,
             couponUsed: form.couponUsed,
             purchaseMethod: form.purchaseMethod,
             items: {
                 name: form.name,
                 tags: form.tags,
-                price: form.price,
                 quantity: form.quantity
-            }
+        }
+   
+
         })    
 
             .then(response =>{

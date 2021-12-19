@@ -30,6 +30,7 @@ const Navtop = props => {
     return(
     <div className = "navbar">
         <div className = "float-right pt-2 pb-2">
+        
            <h3 className = "nomargin headingsWhite">SalesManagerDB</h3>
         </div>
 

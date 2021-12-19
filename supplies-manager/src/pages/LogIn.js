@@ -1,11 +1,11 @@
-import axios from "axios"
+import axios from '../config/index.js'
 import { useState } from 'react';
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 const LogIn = props => {
 
-    const [login, setLogin] = useState({name: "Liamo", password: "secret"});
+    const [login, setLogin] = useState({});
     let navigate = useNavigate();
 
     const loginHandler = (e) => {
@@ -19,7 +19,7 @@ const LogIn = props => {
       const submitLogin = () =>{
         console.log(login)
       
-        axios.post('http://localhost:8000/admins/login', {
+        axios.post('/admins/login', {
           name: login.name,
           password: login.password
         })

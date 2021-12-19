@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap'
-import axios from "axios"
+import axios from '../config/index.js'
 import { useNavigate } from 'react-router'
 import { useState} from "react"
 
@@ -39,7 +39,7 @@ const CreateSale = (props) => {
 
         let auth_token = localStorage.getItem('auth_token')
 
-        axios.post("http://localhost:8000/sales", 
+        axios.post("/sales", 
           
         {
             storeLocation: form.storeLocation,

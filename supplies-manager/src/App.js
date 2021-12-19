@@ -17,8 +17,12 @@ import UsersPage from './pages/UsersPage';
 
 
 const App = () => {
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&family=Rokkitt&display=swap');
+  </style>
+
   const [authenticated, setAuthenticated] = useState(false)
-  // let protectedFestivals
 
   useEffect(() => {
     if(localStorage.getItem('auth_token'))
@@ -37,22 +41,32 @@ const App = () => {
     }
     
   }
+  let protectedRoutes
+  if(authenticated) {
+    protectedRoutes = (
+      <>
+      <Route path="/sales/:id/edit" element={<EditSale />}></Route>
+      <Route path="/sales/:id" element={<SingleSale />}></Route>
+      <Route path="/sales/create" element={<CreateSale />}></Route>
+      <Route path="/home" element={<HomePage />}></Route>
+      </>
+    )
+  }
+
+  
+
   return (
      <Router>
 
 <NavLeft />
       <Navbar onAuthenticated={onAuthenticated} authenticated={authenticated} />
       <div className = "container">
-      
       <Routes>
-          <Route path="/home" element={<HomePage />}></Route>
           <Route path="/sales/users" element={<UsersPage />}></Route>
-          <Route path="/sales" element={<SalesPage />}></Route>
-          <Route path="/sales/:id" element={<SingleSale />}></Route>
-          <Route path="/sales/create" element={<CreateSale />}></Route>
-          <Route path="/sales/:id/edit" element={<EditSale />}></Route>
-          <Route path="/admin/create" element={<CreateAdmin onAuthenticated={onAuthenticated} authenticated={authenticated}/>}></Route>
+          <Route path="/sales" element={<SalesPage />}></Route>      
+          <Route path="/admins/register" element={<CreateAdmin onAuthenticated={onAuthenticated} authenticated={authenticated}/>}></Route>
           <Route path="/" element={<LogIn onAuthenticated={onAuthenticated} authenticated={authenticated}/>}></Route>
+          {protectedRoutes}
       </Routes>
       </div>
     </Router>

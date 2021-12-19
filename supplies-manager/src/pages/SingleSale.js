@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import axios from 'axios'
+import axios from '../config/index.js'
 import '../style.css';
 import { useEffect, useState } from 'react'
 import { Table, Button,ButtonGroup } from 'react-bootstrap'
@@ -10,7 +10,7 @@ const SingleSale = () => {
     const [sale, setSale] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/sales/${id}`)
+        axios.get(`/sales/${id}`)
         .then(response=> {
             console.log(response.data.sale)
             setSale(response.data.sale)
@@ -30,7 +30,7 @@ const SingleSale = () => {
               <tbody key = {item._id} className = "">
                   <tr className = "col-back border-style">
                       <td>{ item.name }</td>
-                      <td> { item.price.$numberDecimal }</td>
+                      {/* <td> { item.price.$numberDecimal }</td> */}
                       <td>{ item.quantity }</td>
                   </tr>
               </tbody>
@@ -62,7 +62,7 @@ const SingleSale = () => {
                     <thead className = "table-back border-color headingsWhite">
                         <tr>
                             <th>Name</th>
-                            <th>Price</th>
+                            {/* <th>Price</th> */}
                             <th>Quantity</th>
                         </tr>
                     </thead>
@@ -70,7 +70,7 @@ const SingleSale = () => {
                     { itemList }
                 </Table>
 
-                <ButtonGroup className = "floatRight">
+                <ButtonGroup className = "floatRight border-style">
                     <Link className = "text-link" to = {`/sales/${sale._id}/edit`}><Button variant="" className = "custom-edit" type = "submit" >Edit</Button></Link>
                     <Button className = "ml-5 custom-delete" variant ="" type = "submit">Delete</Button>
                 </ButtonGroup>

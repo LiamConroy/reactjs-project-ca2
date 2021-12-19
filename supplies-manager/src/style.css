@@ -22,7 +22,7 @@
 }
 
 .sidePad{
-    padding-top: 735px;
+    padding-top: 785px;
 }
 
 .nomargin{
@@ -100,16 +100,19 @@
 }
 
 .custom-edit{
+    font-family: 'Roboto', sans-serif;   
     border-radius: 0% !important;
     background-color: #FFDA58 !important;
 }
 
 .custom-delete{
+    font-family: 'Roboto', sans-serif;   
     border-radius: 0% !important;
     background-color: #FF5656 !important;
 }
 
 .custom-create{
+    font-family: 'Roboto', sans-serif;   
     border-style: solid !important;
     border-color: black !important;
     border-radius: 0% !important;
@@ -136,6 +139,7 @@ body{
 
 .border-style{
     border:solid;
+    border-width: 0.5px;
     border-color: black ;
 }
 
@@ -159,4 +163,25 @@ body{
 
 .custom-input{
     width:65%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    font-family: 'Rokkitt', serif;
+}
+
+td {
+    font-family: 'Rokkitt', serif;
+}
+
+.font-roboto{
+    font-family: 'Roboto', sans-serif;   
 }
